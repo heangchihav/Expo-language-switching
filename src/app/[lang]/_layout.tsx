@@ -1,6 +1,7 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack, usePathname } from 'expo-router';
+import { usePathname } from 'expo-router';
+import { Drawer } from 'expo-router/drawer'
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { useColorScheme } from '../../hooks/useColorScheme';
@@ -33,11 +34,11 @@ function LayoutContent() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="about" />
-        <Stack.Screen name="contact" />
-      </Stack>
+      <Drawer>
+        <Drawer.Screen name="index" options={{ headerShown: true }} />
+        <Drawer.Screen name="about" />
+        <Drawer.Screen name="contact" />
+      </Drawer>
     </ThemeProvider>
   );
 }

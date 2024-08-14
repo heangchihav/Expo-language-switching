@@ -1,6 +1,7 @@
 import { View, Text } from 'react-native';
 import { useLanguage } from '../../contexts/LanguageContext';
 import LanguageSwitcher from '@/src/components/LanguageSwitcher';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomePage() {
   const { language } = useLanguage();
@@ -11,9 +12,9 @@ export default function HomePage() {
   };
 
   return (
-    <View>
+    <SafeAreaView>
       <LanguageSwitcher/>
       <Text>{content[language]}</Text>
-    </View>
+    </SafeAreaView>
   );
 }
