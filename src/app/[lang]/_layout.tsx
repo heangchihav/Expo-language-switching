@@ -4,7 +4,7 @@ import { Stack, usePathname } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { LanguageProvider, useLanguage } from '../../contexts/LanguageContext';
+import { Language, LanguageProvider, useLanguage } from '../../contexts/LanguageContext';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();

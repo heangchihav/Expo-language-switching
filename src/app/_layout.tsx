@@ -1,10 +1,11 @@
+// src/app/_layout.tsx
 import React, { useEffect, useState } from 'react';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack, usePathname, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useColorScheme } from '../hooks/useColorScheme';
-import { LanguageProvider, useLanguage } from '../contexts/LanguageContext';
+import { LanguageProvider, useLanguage, Language } from '../contexts/LanguageContext';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -28,7 +29,7 @@ function LayoutContent() {
 
   useEffect(() => {
     if (isReady) {
-      const language = pathname?.split('/')[1] || 'en';
+      const language: Language = (pathname?.split('/')[1] as Language) || 'en';
       setLanguage(language);
 
       // Redirect to default language if pathname is '/'
@@ -45,9 +46,7 @@ function LayoutContent() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="[lang]/index" options={{ headerShown: false }} />
-        <Stack.Screen name="[lang]/about" />
-        <Stack.Screen name="[lang]/contact" />
+        <Stack.Screen name="[lang]" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   );
